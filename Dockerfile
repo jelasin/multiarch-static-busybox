@@ -1,5 +1,15 @@
 FROM ubuntu:24.04
 
+RUN dpkg --add-architecture i386
+
+RUN apt-get update && apt-get install -y \
+    libc6-dev-i386 \
+    lib32stdc++6 \
+    lib32gcc-s1 \
+    gcc-multilib \
+    g++-multilib \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     gcc \
@@ -31,6 +41,10 @@ RUN apt-get update && apt-get install -y \
     g++-powerpc-linux-gnu \
     gcc-riscv64-linux-gnu \
     g++-riscv64-linux-gnu \
+    gcc-x86-64-linux-gnu \
+    g++-x86-64-linux-gnu \
+    gcc-i686-linux-gnu \
+    g++-i686-linux-gnu \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace

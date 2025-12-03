@@ -3,10 +3,10 @@ services:
     build: .
     image: busybox-builder:latest
     container_name: busybox-builder
-    stdin_open: true      # 等同于 -i
-    tty: true             # 等同于 -t
+    stdin_open: true
+    tty: true
     volumes:
-      - ./output:/output              # 编译输出目录
-      - ./workspace:/workspace        # 工作目录（可选）
+      - ./output:/output
+      - ./workspace:/workspace
     working_dir: /workspace
 
